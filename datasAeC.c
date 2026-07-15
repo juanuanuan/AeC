@@ -145,7 +145,7 @@ void rehash(int S, Bucket source[S], int T, Bucket target[T]){
 }
 
 
-void gargabeC(HashTable h){
+void garbageC(HashTable h){
     Bucket *temp = malloc(HSIZE * sizeof(Bucket));
 
     for(int i = 0; i < HSIZE; i++){
