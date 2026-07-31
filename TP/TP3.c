@@ -68,7 +68,7 @@ int add(int x, PriorityQueue *q){ // Melhor Caso: O(1), i.e., queue cheia
     q ->tamanho ++;             // sendo (c) o custo de uma comparacao, e (i) o custo da incrementacao 
 }
 
-int remove(PriorityQueue *q, int *rem){
+int remove(PriorityQueue *q, int *rem){ //melhor caso O(1) (a raiz nova não precisa descer), pior caso O(logN) (bubbleDown desce até à folha).
     if(q ->tamanho == 0) return -1;
     *rem = q ->valores[0];
     q -> valores[0] = q -> valores[-- q -> tamanho];
@@ -78,7 +78,7 @@ int remove(PriorityQueue *q, int *rem){
 
 //5
 
-void heapifyBBDown(int v[], int N){ // Melhor caso: quando o vetor tem apenas um elemento, pelo que o ciclo "for" executa uma vez e chama a funcao bbup no seu melhor caso pelo que temos: O(1) 
+void heapifyBBDown(int v[], int N){ // Melhor caso: para N fixo e dados já a satisfazer a propriedade de heap, o ciclo corre sempre N/2 vezes e cada bubbleDown custa → Θ(N).
     for(int i = (N - 2)/2; i >= 0; i--) bubbleDown(i, v, N); // Pior caso: Para um N suficiemntemente grande (ou N > 1), o pior caso acontece quando temo de ordenar todos os elementos do vetor. pelo que o custo e dado por: T(N) = sum_{k = 0 logN} [N/2^(k + 1)] * k -> O(N)
 }
 
